@@ -2,7 +2,7 @@ Shopware.Component.register('tb-service-ticket-list', () => import('./page/tb-se
 Shopware.Component.register('tb-service-ticket-detail', () => import('./page/tb-service-ticket-detail'));
 
 Shopware.Module.register('tb-service-ticket', {
-    type: 'plugin',
+    type: 'core',
     name: 'ServiceTicket',
     title: 'tb-service-ticket.general.mainMenuItemGeneral',
     description: 'tb-service-ticket.general.descriptionTextModule',
