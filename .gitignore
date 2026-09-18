@@ -3,10 +3,12 @@
 
 # Public resources
 src/Resources/public
+src/Resources/app/administration/.tmp
 
 # Node / Administration builds
 /node_modules/
 /.vite/
+*/.tmp/*
 /assets/
 
 # PHPUnit
