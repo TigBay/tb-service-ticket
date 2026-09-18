@@ -2,12 +2,12 @@ Shopware.Component.register('tb-service-ticket-list', () => import('./page/tb-se
 Shopware.Component.register('tb-service-ticket-detail', () => import('./page/tb-service-ticket-detail'));
 
 Shopware.Module.register('tb-service-ticket', {
-    type: 'core',
+    type: 'core', // type 'plugin' does not work -.-
     name: 'ServiceTicket',
     title: 'tb-service-ticket.general.mainMenuItemGeneral',
     description: 'tb-service-ticket.general.descriptionTextModule',
     color: '#ff3d58',
-    icon: 'default-shopping-paper-bag-product',
+    icon: 'regular-file',
     entity: 'tb_service_ticket',
 
     routes: {
@@ -41,7 +41,7 @@ Shopware.Module.register('tb-service-ticket', {
             id: 'tb-service-ticket',
             label: 'tb-service-ticket.general.mainMenuItemGeneral',
             color: '#ff3d58',
-            icon: 'default-shopping-paper-bag-product',
+            icon: 'regular-file',
             position: 35, // between Orders (position: 30) and Customers (position: 40)
         },
         {

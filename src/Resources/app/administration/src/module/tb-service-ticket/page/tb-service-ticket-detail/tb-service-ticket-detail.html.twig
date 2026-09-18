@@ -40,7 +40,7 @@
                                     required
                                     :label="$t('tb-service-ticket.detail.labelTitle')"
                                     :placeholder="$t('tb-service-ticket.detail.placeholderTitle')"
-                                    :error="titleError"
+                                    :error="serviceTicketTitleError"
                             />
                         {% endblock %}
 
@@ -50,7 +50,7 @@
                                     required
                                     :label="$t('tb-service-ticket.detail.labelStatus')"
                                     :options="statusOptions"
-                                    :error="statusError"
+                                    :error="serviceTicketStatusError"
                             />
                         {% endblock %}
 
@@ -60,7 +60,7 @@
                                     required
                                     :label="$t('tb-service-ticket.detail.labelPriority')"
                                     :options="priorityOptions"
-                                    :error="priorityError"
+                                    :error="serviceTicketPriorityError"
                             />
                         {% endblock %}
 
@@ -68,7 +68,7 @@
                             <mt-text-field
                                     v-model="serviceTicket.email"
                                     :label="$t('tb-service-ticket.detail.labelEmail')"
-                                    :error="emailFormatError"
+                                    :error="serviceTicketFormatError"
                             />
                         {% endblock %}
 
