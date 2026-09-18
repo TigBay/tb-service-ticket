@@ -1,0 +1,81 @@
+{% block tb_service_ticket_detail %}
+    <sw-page class="tb-service-ticket-detail">
+
+        {% block tb_service_ticket_detail_smart_bar_header %}
+            <template #smart-bar-header>
+                {# Show service ticket title if the service ticket exists #}
+                <h2>{{ serviceTicket ? serviceTicket.title : $t('tb-service-ticket.detail.titleCreate') }}</h2>
+            </template>
+        {% endblock %}
+
+        {% block tb_service_ticket_detail_actions %}
+            <template #smart-bar-actions>
+                <mt-button
+                        class="tb-service-ticket-detail__cancel"
+                        variant="secondary"
+                        @click="onCancel"
+                >
+                    {{ $t('tb-service-ticket.detail.buttonCancel') }}
+                </mt-button>
+                <mt-button
+                        class="tb-service-ticket-detail__save"
+                        variant="primary"
+                        :disabled="!acl.can('tb_service_ticket.editor') || undefined"
+                        :is-loading="isLoading"
+                        @click="onSave"
+                >
+                    {{ $t('tb-service-ticket.detail.buttonSave') }}
+                </mt-button>
+            </template>
+        {% endblock %}
+
+        {% block tb_service_ticket_detail_content %}
+            <template #content>
+                <sw-card-view v-if="serviceTicket">
+                    <mt-card position-identifier="tb-service-ticket-detail-content">
+
+                        {% block tb_service_ticket_detail_field_title %}
+                            <mt-text-field
+                                    v-model="serviceTicket.title"
+                                    required
+                                    :label="$t('tb-service-ticket.detail.labelTitle')"
+                                    :placeholder="$t('tb-service-ticket.detail.placeholderTitle')"
+                                    :error="titleError"
+                            />
+                        {% endblock %}
+
+                        {% block tb_service_ticket_detail_field_status %}
+                            <mt-select
+                                    v-model="serviceTicket.status"
+                                    required
+                                    :label="$t('tb-service-ticket.detail.labelStatus')"
+                                    :options="statusOptions"
+                                    :error="statusError"
+                            />
+                        {% endblock %}
+
+                        {% block tb_service_ticket_detail_field_priority %}
+                            <mt-select
+                                    v-model="serviceTicket.priority"
+                                    required
+                                    :label="$t('tb-service-ticket.detail.labelPriority')"
+                                    :options="priorityOptions"
+                                    :error="priorityError"
+                            />
+                        {% endblock %}
+
+                        {% block tb_service_ticket_detail_field_email %}
+                            <mt-text-field
+                                    v-model="serviceTicket.email"
+                                    :label="$t('tb-service-ticket.detail.labelEmail')"
+                                    :error="emailFormatError"
+                            />
+                        {% endblock %}
+
+                    </mt-card>
+                </sw-card-view>
+            </template>
+        {% endblock %}
+
+    </sw-page>
+{% endblock %}
