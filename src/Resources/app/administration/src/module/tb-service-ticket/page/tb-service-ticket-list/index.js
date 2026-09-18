@@ -33,6 +33,29 @@ export default {
         serviceTicketRepository() {
             return this.repositoryFactory.create('tb_service_ticket');
         },
+
+        columns() {
+            return [
+                {
+                    property: 'title',
+                    label: 'tb-service-ticket.list.columnTitle',
+                    routerLink: 'tb.service.ticket.detail',
+                    primary: true,
+                },
+                {
+                    property: 'status',
+                    label: 'tb-service-ticket.list.columnStatus',
+                },
+                {
+                    property: 'priority',
+                    label: 'tb-service-ticket.list.columnPriority',
+                },
+                {
+                    property: 'createdAt',
+                    label: 'tb-service-ticket.list.columnCreatedAt',
+                },
+            ];
+        },
     },
 
     created() {

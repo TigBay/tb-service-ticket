@@ -1,0 +1,72 @@
+{# Used sw-settings-salutation-list.html.twig as example/reference #}
+{% block tb_service_ticket_list %}
+    <sw-page class="tb-service-ticket-list">
+
+        {% block tb_service_ticket_list_search_bar %}
+            <template #search-bar>
+                <sw-search-bar
+                        initial-search-type="tb_service_ticket"
+                        :placeholder="$t('tb-service-ticket.general.placeholderSearchBar')"
+                        :initial-search="term"
+                        @search="onSearch"
+                />
+            </template>
+        {% endblock %}
+
+        {% block tb_service_ticket_list_smart_bar_header %}
+            <template #smart-bar-header>
+                <h2>
+                    {{ $t('tb-service-ticket.list.titlePage') }}
+                    <span
+                            v-if="!isLoading && serviceTickets && total"
+                            class="sw-page__smart-bar-amount"
+                    >
+                ({{ total }})
+            </span>
+                </h2>
+            </template>
+        {% endblock %}
+
+        {% block tb_service_ticket_list_actions %}
+            <template #smart-bar-actions>
+                <mt-button
+                        class="tb-service-ticket-list__create"
+                        variant="primary"
+                        size="default"
+                        @click="$router.push({ name: 'tb.service.ticket.create' })"
+                >
+                    {{ $t('tb-service-ticket.list.buttonCreate') }}
+                </mt-button>
+            </template>
+        {% endblock %}
+
+        {% block tb_service_ticket_list_content %}
+            <template #content>
+                <sw-card-view>
+                    <mt-card position-identifier="tb-service-ticket-list-content">
+                        {% block tb_service_ticket_list_grid %}
+                            <template #grid>
+                                <sw-entity-listing
+                                        class="tb-service-ticket-list-grid"
+                                        :repository="serviceTicketRepository"
+                                        :is-loading="isLoading"
+                                        :data-source="serviceTickets"
+                                        :columns="columns"
+                                        identifier="tb-service-ticket-list"
+                                        :sort-by="sortBy"
+                                        :sort-direction="sortDirection"
+                                        :full-page="false"
+                                        detail-route="tb.service.ticket.detail"
+                                        :disable-data-fetching="true"
+                                        @column-sort="onSortColumn"
+                                        @page-change="onPageChange"
+                                />
+                            </template>
+                        {% endblock %}
+                    </mt-card>
+                </sw-card-view>
+            </template>
+        {% endblock %}
+
+    </sw-page>
+{% endblock %}
