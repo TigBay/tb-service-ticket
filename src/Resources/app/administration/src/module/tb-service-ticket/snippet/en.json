@@ -1,8 +1,40 @@
 {
-    "swag-example": {
+    "tb-service-ticket": {
         "general": {
-            "mainMenuItemGeneral": "My custom module",
-            "descriptionTextModule": "Manage this custom module here"
+            "mainMenuItemGeneral": "Service Tickets",
+            "descriptionTextModule": "Manage service tickets",
+            "placeholderSearchBar": "Search service tickets..."
+        },
+        "list": {
+            "titlePage": "Service Tickets",
+            "buttonCreate": "Add ticket",
+            "columnTitle": "Title",
+            "columnStatus": "Status",
+            "columnPriority": "Priority",
+            "columnCreatedAt": "Created at"
+        },
+        "detail": {
+            "titleCreate": "New service ticket",
+            "labelTitle": "Title",
+            "labelStatus": "Status",
+            "labelPriority": "Priority",
+            "labelEmail": "Email",
+            "placeholderTitle": "Enter a title...",
+            "buttonSave": "Save",
+            "buttonCancel": "Cancel",
+            "messageSaveSuccess": "Ticket saved successfully.",
+            "messageSaveError": "Please fill in all required fields correctly.",
+            "errorEmailInvalid": "Please enter a valid email address.",
+            "statusOptions": {
+                "open": "Open",
+                "inProgress": "In progress",
+                "closed": "Closed"
+            },
+            "priorityOptions": {
+                "low": "Low",
+                "medium": "Medium",
+                "high": "High"
+            }
         }
     }
 }

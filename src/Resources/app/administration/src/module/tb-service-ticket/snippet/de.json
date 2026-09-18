@@ -1,8 +1,40 @@
 {
     "tb-service-ticket": {
         "general": {
-            "mainMenuItemGeneral": "My custom module",
-            "descriptionTextModule": "Manage this custom module here"
+            "mainMenuItemGeneral": "Service-Tickets",
+            "descriptionTextModule": "Service-Tickets verwalten",
+            "placeholderSearchBar": "Service-Tickets durchsuchen..."
+        },
+        "list": {
+            "titlePage": "Service-Tickets",
+            "buttonCreate": "Ticket hinzufügen",
+            "columnTitle": "Titel",
+            "columnStatus": "Status",
+            "columnPriority": "Priorität",
+            "columnCreatedAt": "Erstellt am"
+        },
+        "detail": {
+            "titleCreate": "Neues Service-Ticket",
+            "labelTitle": "Titel",
+            "labelStatus": "Status",
+            "labelPriority": "Priorität",
+            "labelEmail": "E-Mail",
+            "placeholderTitle": "Titel eingeben...",
+            "buttonSave": "Speichern",
+            "buttonCancel": "Abbrechen",
+            "messageSaveSuccess": "Ticket erfolgreich gespeichert.",
+            "messageSaveError": "Bitte alle Pflichtfelder korrekt ausfüllen.",
+            "errorEmailInvalid": "Bitte eine gültige E-Mail-Adresse eingeben.",
+            "statusOptions": {
+                "open": "Offen",
+                "inProgress": "In Bearbeitung",
+                "closed": "Geschlossen"
+            },
+            "priorityOptions": {
+                "low": "Niedrig",
+                "medium": "Mittel",
+                "high": "Hoch"
+            }
         }
     }
 }
