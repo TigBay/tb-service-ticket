@@ -1,4 +1,3 @@
-{# Used sw-settings-salutation-list.html.twig as example/reference #}
 {% block tb_service_ticket_list %}
     <sw-page class="tb-service-ticket-list">
 
@@ -32,6 +31,7 @@
                 <mt-button
                         class="tb-service-ticket-list__create"
                         variant="primary"
+                        :disabled="!acl.can('tb_service_ticket.creator') || undefined"
                         size="default"
                         @click="$router.push({ name: 'tb.service.ticket.create' })"
                 >
@@ -58,6 +58,10 @@
                                         :full-page="false"
                                         detail-route="tb.service.ticket.detail"
                                         :disable-data-fetching="true"
+                                        :show-selection="acl.can('tb_service_ticket.deleter') || undefined"
+                                        :allow-edit="acl.can('tb_service_ticket.editor') || undefined"
+                                        :allow-view="acl.can('tb_service_ticket.viewer') || undefined"
+                                        :allow-delete="acl.can('tb_service_ticket.deleter') || undefined"
                                         @column-sort="onSortColumn"
                                         @page-change="onPageChange"
                                 />
