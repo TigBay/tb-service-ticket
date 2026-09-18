@@ -9,39 +9,52 @@ class TbServiceTicketEntity extends Entity
 {
     use EntityIdTrait;
 
-    protected ?string $name;
+    protected string $title;
+    protected string $status;
+    protected string $priority;
+    protected string $email;
 
-    protected ?string $description;
-
-    protected bool $active;
-
-    public function getName(): ?string
+    public function getTitle(): string
     {
-        return $this->name;
+        return $this->title;
     }
 
-    public function setName(?string $name): void
+    public function setTitle(string $title): TbServiceTicketEntity
     {
-        $this->name = $name;
+        $this->title = $title;
+        return $this;
     }
 
-    public function getDescription(): ?string
+    public function getStatus(): string
     {
-        return $this->description;
+        return $this->status;
     }
 
-    public function setDescription(?string $description): void
+    public function setStatus(string $status): TbServiceTicketEntity
     {
-        $this->description = $description;
+        $this->status = $status;
+        return $this;
     }
 
-    public function isActive(): bool
+    public function getPriority(): string
     {
-        return $this->active;
+        return $this->priority;
     }
 
-    public function setActive(bool $active): void
+    public function setPriority(string $priority): TbServiceTicketEntity
     {
-        $this->active = $active;
+        $this->priority = $priority;
+        return $this;
+    }
+
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): TbServiceTicketEntity
+    {
+        $this->email = $email;
+        return $this;
     }
 }

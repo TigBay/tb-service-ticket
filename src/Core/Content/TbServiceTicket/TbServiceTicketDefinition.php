@@ -3,12 +3,11 @@
 namespace Tb\Core\Content\TbServiceTicket;
 
 use Shopware\Core\Framework\DataAbstractionLayer\EntityDefinition;
-use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
-use Shopware\Core\Framework\DataAbstractionLayer\Field\BoolField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\PrimaryKey;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\IdField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\StringField;
+use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 
 class TbServiceTicketDefinition extends EntityDefinition
 {
@@ -33,9 +32,10 @@ class TbServiceTicketDefinition extends EntityDefinition
     {
         return new FieldCollection([
             (new IdField('id', 'id'))->addFlags(new Required(), new PrimaryKey()),
-            (new StringField('name', 'name')),
-            (new StringField('description', 'description')),
-            (new BoolField('active', 'active'))
+            (new StringField('title', 'title'))->addFlags(new Required()),
+            (new StringField('status', 'status'))->addFlags(new Required()),
+            (new StringField('priority', 'priority'))->addFlags(new Required()),
+            (new StringField('email', 'email')),
         ]);
     }
 }

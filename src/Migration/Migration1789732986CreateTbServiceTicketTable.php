@@ -17,9 +17,10 @@ class Migration1789732986CreateTbServiceTicketTable extends MigrationStep
         $sql = <<<SQL
 CREATE TABLE IF NOT EXISTS `tb_service_ticket` (
     `id` BINARY(16) NOT NULL,
-    `name` VARCHAR(255) COLLATE utf8mb4_unicode_ci,
-    `description` VARCHAR(255) COLLATE utf8mb4_unicode_ci,
-    `active` TINYINT(1) COLLATE utf8mb4_unicode_ci,
+    `title` VARCHAR(255) COLLATE utf8mb4_unicode_ci,
+    `status` VARCHAR(255) COLLATE utf8mb4_unicode_ci,
+    `priority` VARCHAR(255) COLLATE utf8mb4_unicode_ci,
+    `email` VARCHAR(255) COLLATE utf8mb4_unicode_ci,
     `created_at` DATETIME(3) NOT NULL,
     `updated_at` DATETIME(3),
     PRIMARY KEY (`id`)
