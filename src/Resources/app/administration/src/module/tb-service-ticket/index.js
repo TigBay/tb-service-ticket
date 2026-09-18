@@ -1,38 +1,38 @@
-// <plugin root>/src/Resources/app/administration/src/module/swag-example/index.js
+// <plugin root>/src/Resources/app/administration/src/module/tb-service-ticket/index.js
 
-Shopware.Module.register('swag-example', {
+Shopware.Module.register('tb-service-ticket', {
     type: 'plugin',
     name: 'Example',
-    title: 'swag-example.general.mainMenuItemGeneral',
+    title: 'tb-service-ticket.general.mainMenuItemGeneral',
     description: 'sw-property.general.descriptionTextModule',
     color: '#ff3d58',
     icon: 'default-shopping-paper-bag-product',
 
     routes: {
         list: {
-            component: 'swag-example-list',
+            component: 'tb-service-ticket-list',
             path: 'list'
         },
         detail: {
-            component: 'swag-example-detail',
+            component: 'tb-service-ticket-detail',
             path: 'detail/:id',
             meta: {
-                parentPath: 'swag.example.list'
+                parentPath: 'tb.service.ticket.list'
             }
         },
         create: {
-            component: 'swag-example-create',
+            component: 'tb-service-ticket-create',
             path: 'create',
             meta: {
-                parentPath: 'swag.example.list'
+                parentPath: 'tb.service.ticket.list'
             }
         }
     },
 
     navigation: [{
-        label: 'swag-example.general.mainMenuItemGeneral',
+        label: 'tb-service-ticket.general.mainMenuItemGeneral',
         color: '#ff3d58',
-        path: 'swag.example.list',
+        path: 'tb.service.ticket.list',
         icon: 'default-shopping-paper-bag-product',
         position: 100
     }]
