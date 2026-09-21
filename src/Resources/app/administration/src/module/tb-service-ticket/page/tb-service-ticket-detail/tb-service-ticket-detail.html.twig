@@ -72,6 +72,18 @@
                             />
                         {% endblock %}
 
+                        {% block tb_service_ticket_detail_field_customer %}
+                            <sw-entity-single-select
+                                    v-model:value="serviceTicket.customerId"
+                                    entity="customer"
+                                    :label="$t('tb-service-ticket.detail.labelCustomer')"
+                                    :placeholder="$t('tb-service-ticket.detail.placeholderCustomer')"
+                                    :criteria="customerCriteria"
+                                    :label-property="['firstName', 'lastName', 'email']"
+                                    show-clearable-button
+                            />
+                        {% endblock %}
+
                     </mt-card>
                 </sw-card-view>
             </template>

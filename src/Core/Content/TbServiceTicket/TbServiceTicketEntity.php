@@ -2,6 +2,7 @@
 
 namespace Tb\Core\Content\TbServiceTicket;
 
+use Shopware\Core\Checkout\Customer\CustomerEntity;
 use Shopware\Core\Framework\DataAbstractionLayer\Entity;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityIdTrait;
 
@@ -13,6 +14,9 @@ class TbServiceTicketEntity extends Entity
     protected string $status;
     protected string $priority;
     protected string $email;
+
+    protected ?string $customerId = null;
+    protected ?CustomerEntity $customer = null;
 
     public function getTitle(): string
     {
@@ -55,6 +59,28 @@ class TbServiceTicketEntity extends Entity
     public function setEmail(string $email): TbServiceTicketEntity
     {
         $this->email = $email;
+        return $this;
+    }
+
+    public function getCustomerId(): ?string
+    {
+        return $this->customerId;
+    }
+
+    public function setCustomerId(?string $customerId): TbServiceTicketEntity
+    {
+        $this->customerId = $customerId;
+        return $this;
+    }
+
+    public function getCustomer(): ?CustomerEntity
+    {
+        return $this->customer;
+    }
+
+    public function setCustomer(?CustomerEntity $customer): TbServiceTicketEntity
+    {
+        $this->customer = $customer;
         return $this;
     }
 }

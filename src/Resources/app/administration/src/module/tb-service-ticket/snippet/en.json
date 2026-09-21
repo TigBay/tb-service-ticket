@@ -25,6 +25,8 @@
             "messageSaveSuccess": "Ticket saved successfully.",
             "messageSaveError": "Please fill in all required fields correctly.",
             "errorEmailInvalid": "Please enter a valid email address.",
+            "labelCustomer": "Customer",
+            "placeholderCustomer": "Select customer ...",
             "statusOptions": {
                 "open": "Open",
                 "inProgress": "In progress",

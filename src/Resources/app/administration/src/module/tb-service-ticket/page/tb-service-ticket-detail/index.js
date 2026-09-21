@@ -2,6 +2,7 @@ import template from './tb-service-ticket-detail.html.twig';
 
 const { Mixin } = Shopware;
 const { mapPropertyErrors } = Shopware.Component.getComponentHelper();
+const { Criteria } = Shopware.Data;
 
 export default {
     template,
@@ -55,6 +56,13 @@ export default {
                 { value: 'medium', label: this.$t('tb-service-ticket.detail.priorityOptions.medium') },
                 { value: 'high', label: this.$t('tb-service-ticket.detail.priorityOptions.high') },
             ];
+        },
+
+        customerCriteria() {
+            const criteria = new Criteria(1, 25);
+            criteria.addSorting(Criteria.sort('lastName', 'ASC'));
+
+            return criteria;
         },
 
         ...mapPropertyErrors('serviceTicket', ['title', 'status', 'priority']),
