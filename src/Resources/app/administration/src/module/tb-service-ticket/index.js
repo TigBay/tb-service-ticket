@@ -1,3 +1,4 @@
+import './acl';
 Shopware.Component.register('tb-service-ticket-list', () => import('./page/tb-service-ticket-list'));
 Shopware.Component.register('tb-service-ticket-detail', () => import('./page/tb-service-ticket-detail'));
 
