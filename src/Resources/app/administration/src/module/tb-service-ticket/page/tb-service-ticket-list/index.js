@@ -76,5 +76,14 @@ export default {
                 this.isLoading = false;
             });
         },
+        getPriorityBadgeVariant(priority) {
+            const variants = {
+                low: 'info',
+                medium: 'attention',
+                high: 'critical',
+            };
+
+            return variants[priority] ?? 'neutral';
+        }
     },
 };

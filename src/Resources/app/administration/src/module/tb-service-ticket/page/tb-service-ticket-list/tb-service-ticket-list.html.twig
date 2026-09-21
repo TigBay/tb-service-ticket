@@ -64,7 +64,13 @@
                                         :allow-delete="acl.can('tb_service_ticket.deleter') || undefined"
                                         @column-sort="onSortColumn"
                                         @page-change="onPageChange"
-                                />
+                                >
+                                    <template #column-priority="{ item }">
+                                        <mt-badge :variant="getPriorityBadgeVariant(item.priority)">
+                                            {{ $t(`tb-service-ticket.detail.priorityOptions.${item.priority}`) }}
+                                        </mt-badge>
+                                    </template>
+                                </sw-entity-listing>
                             </template>
                         {% endblock %}
                     </mt-card>
