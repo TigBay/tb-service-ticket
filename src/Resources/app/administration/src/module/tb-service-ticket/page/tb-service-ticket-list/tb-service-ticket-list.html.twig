@@ -20,8 +20,8 @@
                             v-if="!isLoading && serviceTickets && total"
                             class="sw-page__smart-bar-amount"
                     >
-                ({{ total }})
-            </span>
+                        ({{ total }})
+                    </span>
                 </h2>
             </template>
         {% endblock %}
@@ -65,6 +65,14 @@
                                         @column-sort="onSortColumn"
                                         @page-change="onPageChange"
                                 >
+                                    <template #column-status="{ item }">
+                                        {{ $t(`tb-service-ticket.detail.statusOptions.${item.status}`) }}
+                                    </template>
+
+                                    <template #column-createdAt="{ item }">
+                                        {{ dateFilter(item.createdAt, { hour: '2-digit', minute: '2-digit' }) }}
+                                    </template>
+
                                     <template #column-priority="{ item }">
                                         <mt-badge :variant="getPriorityBadgeVariant(item.priority)">
                                             {{ $t(`tb-service-ticket.detail.priorityOptions.${item.priority}`) }}

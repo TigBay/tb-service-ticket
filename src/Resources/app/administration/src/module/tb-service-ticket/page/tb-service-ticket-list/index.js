@@ -10,7 +10,6 @@ export default {
 
     mixins: [
         Mixin.getByName('listing'),
-        Mixin.getByName('placeholder'),
     ],
 
     data() {
@@ -32,6 +31,10 @@ export default {
     computed: {
         serviceTicketRepository() {
             return this.repositoryFactory.create('tb_service_ticket');
+        },
+
+        dateFilter() {
+            return Shopware.Filter.getByName('date');
         },
 
         columns() {
@@ -84,6 +87,6 @@ export default {
             };
 
             return variants[priority] ?? 'neutral';
-        }
+        },
     },
 };

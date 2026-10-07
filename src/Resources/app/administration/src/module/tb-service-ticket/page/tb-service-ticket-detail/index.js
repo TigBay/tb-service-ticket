@@ -4,6 +4,9 @@ const { Mixin } = Shopware;
 const { mapPropertyErrors } = Shopware.Component.getComponentHelper();
 const { Criteria } = Shopware.Data;
 
+const REQUIRED_FIELDS = ['title', 'status', 'priority'];
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export default {
     template,
 
@@ -11,7 +14,6 @@ export default {
 
     mixins: [
         Mixin.getByName('notification'),
-        Mixin.getByName('placeholder'),
     ],
 
     props: {
@@ -26,8 +28,7 @@ export default {
         return {
             serviceTicket: null,
             isLoading: false,
-            isSaveSuccessful: false,
-            emailFormatError: null,
+            validationErrors: {},
         };
     },
 
@@ -65,7 +66,13 @@ export default {
             return criteria;
         },
 
-        ...mapPropertyErrors('serviceTicket', ['title', 'status', 'priority']),
+        ...mapPropertyErrors('serviceTicket', ['title', 'status', 'priority', 'email']),
+    },
+
+    watch: {
+        serviceTicketId() {
+            this.createdComponent();
+        },
     },
 
     created() {
@@ -74,6 +81,8 @@ export default {
 
     methods: {
         createdComponent() {
+            this.validationErrors = {};
+
             if (this.serviceTicketId) {
                 this.loadEntity();
                 return;
@@ -85,24 +94,44 @@ export default {
         loadEntity() {
             this.isLoading = true;
 
-            this.serviceTicketRepository.get(this.serviceTicketId, Shopware.Context.api).then((entity) => {
-                this.serviceTicket = entity;
-                this.isLoading = false;
-            });
+            return this.serviceTicketRepository.get(this.serviceTicketId, Shopware.Context.api)
+                .then((entity) => {
+                    this.serviceTicket = entity;
+                })
+                .catch(() => {
+                    this.createNotificationError({
+                        message: this.$t('tb-service-ticket.detail.messageLoadError'),
+                    });
+                })
+                .finally(() => {
+                    this.isLoading = false;
+                });
         },
 
-        isEmailValid() {
-            if (!this.serviceTicket.email) {
-                return true;
+        validate() {
+            const errors = {};
+
+            REQUIRED_FIELDS.forEach((field) => {
+                if (!String(this.serviceTicket[field] ?? '').trim()) {
+                    errors[field] = { detail: this.$t('tb-service-ticket.detail.errorRequired') };
+                }
+            });
+
+            if (this.serviceTicket.email && !EMAIL_PATTERN.test(this.serviceTicket.email)) {
+                errors.email = { detail: this.$t('tb-service-ticket.detail.errorEmailInvalid') };
             }
-            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.serviceTicket.email);
+
+            this.validationErrors = errors;
+
+            return Object.keys(errors).length === 0;
         },
 
         onSave() {
-            this.emailFormatError = null;
+            if (!this.validate()) {
+                this.createNotificationError({
+                    message: this.$t('tb-service-ticket.detail.messageSaveError'),
+                });
 
-            if (!this.isEmailValid()) {
-                this.emailFormatError = { detail: this.$t('tb-service-ticket.detail.errorEmailInvalid') };
                 return Promise.resolve();
             }
 
@@ -110,27 +139,24 @@ export default {
 
             return this.serviceTicketRepository.save(this.serviceTicket, Shopware.Context.api)
                 .then(() => {
-                    const id = this.serviceTicket.id;
-
-                    return this.serviceTicketRepository.get(id, Shopware.Context.api).then((entity) => {
-                        this.serviceTicket = entity;
-                        this.isLoading = false;
-                        this.isSaveSuccessful = true;
-
-                        if (!this.serviceTicketId) {
-                            this.$router.push({ name: 'tb.service.ticket.detail', params: { id } });
-                        }
-
-                        this.createNotificationSuccess({
-                            message: this.$t('tb-service-ticket.detail.messageSaveSuccess'),
-                        });
+                    this.createNotificationSuccess({
+                        message: this.$t('tb-service-ticket.detail.messageSaveSuccess'),
                     });
+
+                    if (!this.serviceTicketId) {
+                        this.$router.push({ name: 'tb.service.ticket.detail', params: { id: this.serviceTicket.id } });
+                        return;
+                    }
+
+                    this.loadEntity();
                 })
                 .catch(() => {
-                    this.isLoading = false;
                     this.createNotificationError({
                         message: this.$t('tb-service-ticket.detail.messageSaveError'),
                     });
+                })
+                .finally(() => {
+                    this.isLoading = false;
                 });
         },
 

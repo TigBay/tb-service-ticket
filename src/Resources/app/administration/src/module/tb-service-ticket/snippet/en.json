@@ -24,7 +24,9 @@
             "buttonCancel": "Cancel",
             "messageSaveSuccess": "Ticket saved successfully.",
             "messageSaveError": "Please fill in all required fields correctly.",
+            "messageLoadError": "The ticket could not be loaded.",
             "errorEmailInvalid": "Please enter a valid email address.",
+            "errorRequired": "This field is required.",
             "labelCustomer": "Customer",
             "placeholderCustomer": "Select customer ...",
             "statusOptions": {
@@ -36,6 +38,13 @@
                 "low": "Low",
                 "medium": "Medium",
                 "high": "High"
+            }
+        }
+    },
+    "sw-privileges": {
+        "permissions": {
+            "tb_service_ticket": {
+                "label": "Service tickets"
             }
         }
     }

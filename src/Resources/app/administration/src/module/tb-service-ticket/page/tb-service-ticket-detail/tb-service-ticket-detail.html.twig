@@ -3,7 +3,6 @@
 
         {% block tb_service_ticket_detail_smart_bar_header %}
             <template #smart-bar-header>
-                {# Show service ticket title if the service ticket exists #}
                 <h2>{{ serviceTicket ? serviceTicket.title : $t('tb-service-ticket.detail.titleCreate') }}</h2>
             </template>
         {% endblock %}
@@ -40,7 +39,7 @@
                                     required
                                     :label="$t('tb-service-ticket.detail.labelTitle')"
                                     :placeholder="$t('tb-service-ticket.detail.placeholderTitle')"
-                                    :error="serviceTicketTitleError"
+                                    :error="validationErrors.title || serviceTicketTitleError"
                             />
                         {% endblock %}
 
@@ -50,7 +49,7 @@
                                     required
                                     :label="$t('tb-service-ticket.detail.labelStatus')"
                                     :options="statusOptions"
-                                    :error="serviceTicketStatusError"
+                                    :error="validationErrors.status || serviceTicketStatusError"
                             />
                         {% endblock %}
 
@@ -60,7 +59,7 @@
                                     required
                                     :label="$t('tb-service-ticket.detail.labelPriority')"
                                     :options="priorityOptions"
-                                    :error="serviceTicketPriorityError"
+                                    :error="validationErrors.priority || serviceTicketPriorityError"
                             />
                         {% endblock %}
 
@@ -68,7 +67,7 @@
                             <mt-text-field
                                     v-model="serviceTicket.email"
                                     :label="$t('tb-service-ticket.detail.labelEmail')"
-                                    :error="serviceTicketFormatError"
+                                    :error="validationErrors.email || serviceTicketEmailError"
                             />
                         {% endblock %}
 
