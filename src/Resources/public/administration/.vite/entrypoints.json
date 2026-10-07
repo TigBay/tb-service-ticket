@@ -1,0 +1,26 @@
+{
+  "base": "/bundles/tbserviceticket/administration/",
+  "entryPoints": {
+    "tb-service-ticket": {
+      "css": [],
+      "dynamic": [
+        "/bundles/tbserviceticket/administration/assets/index-oUR-INj8.js",
+        "/bundles/tbserviceticket/administration/assets/index-D8uBNDM5.js"
+      ],
+      "js": [
+        "/bundles/tbserviceticket/administration/assets/tb-service-ticket-TWpy5WGY.js"
+      ],
+      "legacy": false,
+      "preload": []
+    }
+  },
+  "legacy": false,
+  "metadatas": {},
+  "version": [
+    "7.1.0",
+    7,
+    1,
+    0
+  ],
+  "viteServer": null
+}

@@ -1,0 +1,24 @@
+{
+  "main.js": {
+    "file": "assets/tb-service-ticket-TWpy5WGY.js",
+    "name": "tb-service-ticket",
+    "src": "main.js",
+    "isEntry": true,
+    "dynamicImports": [
+      "module/tb-service-ticket/page/tb-service-ticket-list/index.js",
+      "module/tb-service-ticket/page/tb-service-ticket-detail/index.js"
+    ]
+  },
+  "module/tb-service-ticket/page/tb-service-ticket-detail/index.js": {
+    "file": "assets/index-D8uBNDM5.js",
+    "name": "index",
+    "src": "module/tb-service-ticket/page/tb-service-ticket-detail/index.js",
+    "isDynamicEntry": true
+  },
+  "module/tb-service-ticket/page/tb-service-ticket-list/index.js": {
+    "file": "assets/index-oUR-INj8.js",
+    "name": "index",
+    "src": "module/tb-service-ticket/page/tb-service-ticket-list/index.js",
+    "isDynamicEntry": true
+  }
+}
