@@ -10,17 +10,16 @@ use Tb\Core\Content\TbServiceTicket\TbServiceTicketDefinition;
 
 readonly class HighPriorityTicketSubscriber implements EventSubscriberInterface
 {
-    public function __construct(
-        private LoggerInterface $logger
-    )
-    {
+    public const string PRIORITY_HIGH = 'high';
 
-    }
+    public function __construct(
+        private LoggerInterface $logger,
+    ) {}
 
     public static function getSubscribedEvents(): array
     {
         return [
-            TbServiceTicketDefinition::ENTITY_NAME . '.written' => 'onTicketWritten'
+            TbServiceTicketDefinition::ENTITY_NAME . '.written' => 'onTicketWritten',
         ];
     }
 
@@ -30,18 +29,17 @@ readonly class HighPriorityTicketSubscriber implements EventSubscriberInterface
             if ($writeResult->getOperation() !== EntityWriteResult::OPERATION_INSERT) {
                 continue;
             }
-            $payload = $writeResult->getPayload();
-            $priority = $payload['priority'] ?? null;
-            $title = $payload['title'] ?? null;
 
-            if ($priority !== 'high') {
+            $payload = $writeResult->getPayload();
+
+            if (($payload['priority'] ?? null) !== self::PRIORITY_HIGH) {
                 continue;
             }
 
             $this->logger->info('A high-priority service ticket was created.', [
                 'ticketId' => $writeResult->getPrimaryKey(),
-                'title' => $title,
-                'priority' => $priority,
+                'title' => $payload['title'] ?? null,
+                'priority' => self::PRIORITY_HIGH,
             ]);
         }
     }

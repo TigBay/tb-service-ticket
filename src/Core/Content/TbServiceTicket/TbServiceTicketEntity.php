@@ -11,11 +11,15 @@ class TbServiceTicketEntity extends Entity
     use EntityIdTrait;
 
     protected string $title;
+
     protected string $status;
+
     protected string $priority;
-    protected string $email;
+
+    protected ?string $email = null;
 
     protected ?string $customerId = null;
+
     protected ?CustomerEntity $customer = null;
 
     public function getTitle(): string
@@ -23,9 +27,10 @@ class TbServiceTicketEntity extends Entity
         return $this->title;
     }
 
-    public function setTitle(string $title): TbServiceTicketEntity
+    public function setTitle(string $title): self
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -34,9 +39,10 @@ class TbServiceTicketEntity extends Entity
         return $this->status;
     }
 
-    public function setStatus(string $status): TbServiceTicketEntity
+    public function setStatus(string $status): self
     {
         $this->status = $status;
+
         return $this;
     }
 
@@ -45,20 +51,22 @@ class TbServiceTicketEntity extends Entity
         return $this->priority;
     }
 
-    public function setPriority(string $priority): TbServiceTicketEntity
+    public function setPriority(string $priority): self
     {
         $this->priority = $priority;
+
         return $this;
     }
 
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
 
-    public function setEmail(string $email): TbServiceTicketEntity
+    public function setEmail(?string $email): self
     {
         $this->email = $email;
+
         return $this;
     }
 
@@ -67,9 +75,10 @@ class TbServiceTicketEntity extends Entity
         return $this->customerId;
     }
 
-    public function setCustomerId(?string $customerId): TbServiceTicketEntity
+    public function setCustomerId(?string $customerId): self
     {
         $this->customerId = $customerId;
+
         return $this;
     }
 
@@ -78,9 +87,10 @@ class TbServiceTicketEntity extends Entity
         return $this->customer;
     }
 
-    public function setCustomer(?CustomerEntity $customer): TbServiceTicketEntity
+    public function setCustomer(?CustomerEntity $customer): self
     {
         $this->customer = $customer;
+
         return $this;
     }
 }

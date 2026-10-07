@@ -5,13 +5,7 @@ namespace Tb\Core\Content\TbServiceTicket;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityCollection;
 
 /**
- * @method void add(TbServiceTicketEntity $entity)
- * @method void set(string $key, TbServiceTicketEntity $entity)
- * @method TbServiceTicketEntity[] getIterator()
- * @method TbServiceTicketEntity[] getElements()
- * @method TbServiceTicketEntity|null get(string $key)
- * @method TbServiceTicketEntity|null first()
- * @method TbServiceTicketEntity|null last()
+ * @extends EntityCollection<TbServiceTicketEntity>
  */
 class TbServiceTicketCollection extends EntityCollection
 {

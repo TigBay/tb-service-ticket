@@ -15,25 +15,23 @@ class Migration1789732986CreateTbServiceTicketTable extends MigrationStep
     public function update(Connection $connection): void
     {
         $sql = <<<SQL
-CREATE TABLE IF NOT EXISTS `tb_service_ticket` (
-    `id` BINARY(16) NOT NULL,
-    `title` VARCHAR(255) COLLATE utf8mb4_unicode_ci,
-    `status` VARCHAR(255) COLLATE utf8mb4_unicode_ci,
-    `priority` VARCHAR(255) COLLATE utf8mb4_unicode_ci,
-    `email` VARCHAR(255) COLLATE utf8mb4_unicode_ci,
-    `created_at` DATETIME(3) NOT NULL,
-    `updated_at` DATETIME(3),
-    PRIMARY KEY (`id`)
-)
-    ENGINE = InnoDB
-    DEFAULT CHARSET = utf8mb4
-    COLLATE = utf8mb4_unicode_ci;
-SQL;
+            CREATE TABLE IF NOT EXISTS `tb_service_ticket` (
+                `id` BINARY(16) NOT NULL,
+                `title` VARCHAR(255) COLLATE utf8mb4_unicode_ci,
+                `status` VARCHAR(255) COLLATE utf8mb4_unicode_ci,
+                `priority` VARCHAR(255) COLLATE utf8mb4_unicode_ci,
+                `email` VARCHAR(255) COLLATE utf8mb4_unicode_ci,
+                `created_at` DATETIME(3) NOT NULL,
+                `updated_at` DATETIME(3),
+                PRIMARY KEY (`id`)
+            )
+                ENGINE = InnoDB
+                DEFAULT CHARSET = utf8mb4
+                COLLATE = utf8mb4_unicode_ci;
+            SQL;
 
         $connection->executeStatement($sql);
     }
 
-    public function updateDestructive(Connection $connection): void
-    {
-    }
+    public function updateDestructive(Connection $connection): void {}
 }
