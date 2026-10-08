@@ -1,17 +1,39 @@
 {
     "name": "tb/tb-service-ticket",
-    "description": "tb/tb-service-ticket",
+    "description": "Shopware 6 plugin that adds a service ticket module to the Administration.",
     "type": "shopware-platform-plugin",
     "version": "1.0.0",
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Tigran Baymann"
+        }
+    ],
     "require": {
-        "shopware/core": "~6.7.0"
+        "php": "~8.4.0 || ~8.5.0",
+        "shopware/core": "~6.7.0",
+        "shopware/administration": "~6.7.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.95",
+        "phpstan/phpstan": "^2.1",
+        "phpunit/phpunit": "^12.5"
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": false,
+            "symfony/runtime": false
+        }
     },
     "extra": {
         "shopware-plugin-class": "Tb\\TbServiceTicket",
         "label": {
-            "de-DE": "Service Ticket",
-            "en-GB": "Service Ticket"
+            "de-DE": "Service-Tickets",
+            "en-GB": "Service Tickets"
+        },
+        "description": {
+            "de-DE": "Service-Tickets in der Administration anlegen, bearbeiten und verwalten.",
+            "en-GB": "Create, edit and manage service tickets in the Administration."
         }
     },
     "autoload": {
