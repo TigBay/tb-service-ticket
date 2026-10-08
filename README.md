@@ -1,6 +1,6 @@
 # TbServiceTicket
 
-[![CI](https://github.com/TigBay/tb_service_ticket/actions/workflows/ci.yml/badge.svg)](https://github.com/TigBay/tb_service_ticket/actions/workflows/ci.yml)
+[![CI](https://github.com/TigBay/tb-service-ticket/actions/workflows/ci.yml/badge.svg)](https://github.com/TigBay/tb-service-ticket/actions/workflows/ci.yml)
 
 Shopware 6 plugin that adds a **Service Tickets** module to the Administration. Tickets have a title, status, priority, an optional email address and can be linked to a customer.
 
